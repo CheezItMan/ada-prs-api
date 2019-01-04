@@ -10,6 +10,7 @@ gem "omniauth", "~> 1.8.1"
 gem "omniauth-github"
 # Authorization framework
 gem "cancancan"
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rescue'
