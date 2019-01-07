@@ -5,11 +5,15 @@ ruby '2.5.3'
 
 ###
 # Added Gems
-gem 'httparty'
-gem "omniauth", "~> 1.8.1"
-gem "omniauth-github"
+gem 'faraday'
+gem 'rack-cors', :require => 'rack/cors'
+
+# Authentication
+gem 'jwt'
+
 # Authorization framework
 gem "cancancan"
+gem 'awesome_print'
 
 group :development, :test do
   gem 'dotenv-rails'
