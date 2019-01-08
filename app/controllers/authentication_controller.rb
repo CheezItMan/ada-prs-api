@@ -7,6 +7,7 @@ class AuthenticationController < ApplicationController
     name = user_info[:name]
     avatar_url = user_info[:avatar_url]
     email = user_info[:email]
+    uid = user_info[:id]
 
     # Generate token
     token = JsonWebToken.encode(login)
@@ -15,9 +16,9 @@ class AuthenticationController < ApplicationController
       name: name,
       login: login,
       avatar_url: avatar_url,
-      email: email
+      email: email,
+      uid: uid
     )
-
 
     # and redirect to the client app
     redirect_to "#{issuer}/auth?token=#{token}"
