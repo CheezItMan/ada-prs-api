@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Repo.create(repo_url: "https://github.com/ada-c10/inspiration-board", individual: true)
+
+Repo.create(repo_url: "https://github.com/Ada-C10/video-store-consumer", individual: false)
+
