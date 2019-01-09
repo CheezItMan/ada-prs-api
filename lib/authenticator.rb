@@ -31,9 +31,6 @@ class Authenticator
       client_secret: ENV['CLIENT_SECRET']
     }
     raise IOError, 'FETCH_ACCESS_TOKEN' unless resp.success?
-    Rails.logger.info "<LOGGING Github ACCESS TOKEN Response>"
-    Rails.logger.info resp.headers
-    Rails.logger.info "</LOGGING Github ACCESS TOKEN Response>"
 
     URI.decode_www_form(resp.body).to_h
   end
@@ -45,6 +42,8 @@ class Authenticator
     raise IOError, 'FETCH_USER_INFO' unless resp.success?
     Rails.logger.info "<LOGGING Github User Info Response>"
     Rails.logger.info resp
+    Rails.logger.info '-----'
+    Rails.logger.info JSON.parse(resp.body)
     Rails.logger.info "</LOGGING Github User Info Response>"
     JSON.parse(resp.body)
   end
