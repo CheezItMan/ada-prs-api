@@ -1,0 +1,283 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://github.com/login/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=<CLIENT_ID>&client_secret=<CLIENT_SECRET>&code
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 09 Jan 2019 01:43:10 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      - X-PJAX
+      Set-Cookie:
+      - has_recent_activity=1; path=/; expires=Wed, 09 Jan 2019 02:43:10 -0000
+      - ignored_unsupported_browser_notice=false; path=/
+      X-Request-Id:
+      - 9f81b192-41ea-4284-b978-a75bcabfc7d9
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Expect-Ct:
+      - max-age=2592000, report-uri="https://api.github.com/_private/browser/errors"
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; connect-src
+        ''self'' uploads.github.com www.githubstatus.com collector.githubapp.com api.github.com
+        www.google-analytics.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com
+        github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com
+        wss://live.github.com; font-src github.githubassets.com; form-action ''self''
+        github.com gist.github.com; frame-ancestors ''none''; frame-src render.githubusercontent.com;
+        img-src ''self'' data: github.githubassets.com assets-cdn.github.com identicons.github.com
+        collector.githubapp.com github-cloud.s3.amazonaws.com *.githubusercontent.com;
+        manifest-src ''self''; media-src ''none''; script-src github.githubassets.com;
+        style-src ''unsafe-inline'' github.githubassets.com'
+      X-Github-Request-Id:
+      - D1D9:4414:31B6799:4AB5567:5C3551AE
+    body:
+      encoding: UTF-8
+      string: error=bad_verification_code&error_description=The+code+passed+is+incorrect+or+expired.&error_uri=https%3A%2F%2Fdeveloper.github.com%2Fapps%2Fmanaging-oauth-apps%2Ftroubleshooting-oauth-app-access-token-request-errors%2F%23bad-verification-code
+    http_version: 
+  recorded_at: Wed, 09 Jan 2019 01:43:07 GMT
+- request:
+    method: get
+    uri: https://api.github.com/user?access_token
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 09 Jan 2019 01:43:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '125'
+      Server:
+      - GitHub.com
+      Status:
+      - 401 Unauthorized
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '54'
+      X-Ratelimit-Reset:
+      - '1547000260'
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D1DA:30A2:BD5D8C6:EE99E35:5C3551AE
+    body:
+      encoding: UTF-8
+      string: '{"message":"Requires authentication","documentation_url":"https://developer.github.com/v3/users/#get-the-authenticated-user"}'
+    http_version: 
+  recorded_at: Wed, 09 Jan 2019 01:43:07 GMT
+- request:
+    method: post
+    uri: https://github.com/login/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=<CLIENT_ID>&client_secret=<CLIENT_SECRET>&code=12f434baedacdb08f217
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 09 Jan 2019 01:43:10 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      - X-PJAX
+      Set-Cookie:
+      - has_recent_activity=1; path=/; expires=Wed, 09 Jan 2019 02:43:10 -0000
+      - ignored_unsupported_browser_notice=false; path=/
+      X-Request-Id:
+      - 13df059d-61e4-4714-bd84-550512a09ac2
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Expect-Ct:
+      - max-age=2592000, report-uri="https://api.github.com/_private/browser/errors"
+      Content-Security-Policy:
+      - 'default-src ''none''; base-uri ''self''; block-all-mixed-content; connect-src
+        ''self'' uploads.github.com www.githubstatus.com collector.githubapp.com api.github.com
+        www.google-analytics.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com
+        github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com
+        wss://live.github.com; font-src github.githubassets.com; form-action ''self''
+        github.com gist.github.com; frame-ancestors ''none''; frame-src render.githubusercontent.com;
+        img-src ''self'' data: github.githubassets.com assets-cdn.github.com identicons.github.com
+        collector.githubapp.com github-cloud.s3.amazonaws.com *.githubusercontent.com;
+        manifest-src ''self''; media-src ''none''; script-src github.githubassets.com;
+        style-src ''unsafe-inline'' github.githubassets.com'
+      X-Github-Request-Id:
+      - D1DB:4415:3443C99:4E6E1A9:5C3551AE
+    body:
+      encoding: UTF-8
+      string: access_token=34ce4a6c10a4f7554661202b329b3b1f7b6beec2&scope=read%3Auser%2Cwrite%3Adiscussion&token_type=bearer
+    http_version: 
+  recorded_at: Wed, 09 Jan 2019 01:43:07 GMT
+- request:
+    method: get
+    uri: https://api.github.com/user?access_token=34ce4a6c10a4f7554661202b329b3b1f7b6beec2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 09 Jan 2019 01:43:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4998'
+      X-Ratelimit-Reset:
+      - '1547001058'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      Etag:
+      - W/"424935403753b91fffb94ecc12942c65"
+      Last-Modified:
+      - Tue, 01 Jan 2019 04:21:44 GMT
+      X-Oauth-Scopes:
+      - read:user, write:discussion
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - "<CLIENT_ID>"
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D1DC:30A4:CD08884:101802D4:5C3551AE
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"CheezItMan","id":1177416,"node_id":"MDQ6VXNlcjExNzc0MTY=","avatar_url":"https://avatars3.githubusercontent.com/u/1177416?v=4","gravatar_id":"","url":"https://api.github.com/users/CheezItMan","html_url":"https://github.com/CheezItMan","followers_url":"https://api.github.com/users/CheezItMan/followers","following_url":"https://api.github.com/users/CheezItMan/following{/other_user}","gists_url":"https://api.github.com/users/CheezItMan/gists{/gist_id}","starred_url":"https://api.github.com/users/CheezItMan/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/CheezItMan/subscriptions","organizations_url":"https://api.github.com/users/CheezItMan/orgs","repos_url":"https://api.github.com/users/CheezItMan/repos","events_url":"https://api.github.com/users/CheezItMan/events{/privacy}","received_events_url":"https://api.github.com/users/CheezItMan/received_events","type":"User","site_admin":false,"name":"Chris
+        M","company":"Ada Developers Academy","blog":"https://adadevelopersacademy.org","location":"Seattle,
+        Washington","email":"chris@adadevelopersacademy.org","hireable":null,"bio":"An
+        Instructor of Adies!","public_repos":145,"public_gists":30,"followers":18,"following":5,"created_at":"2011-11-07T09:02:20Z","updated_at":"2019-01-01T04:21:44Z","private_gists":9,"total_private_repos":2,"owned_private_repos":0,"disk_usage":70889,"collaborators":0,"two_factor_authentication":false,"plan":{"name":"pro","space":976562499,"collaborators":0,"private_repos":9999}}'
+    http_version: 
+  recorded_at: Wed, 09 Jan 2019 01:43:07 GMT
+recorded_with: VCR 4.0.0
