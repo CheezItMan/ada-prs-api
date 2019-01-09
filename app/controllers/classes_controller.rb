@@ -5,12 +5,11 @@ class ClassesController < ApplicationController
   def index
     render json: {
       ok: true,
-      classes: Classroom.all
+      classes: Classroom.order(:cohort_number, :name)
     }, status: :ok
   end
 
   def update
-
     classroom = Classroom.find_by(id: params[:id])
     authorize! :update, classroom
 
