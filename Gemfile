@@ -18,6 +18,9 @@ gem 'awesome_print'
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rescue'
+  # For testing work with github & authentication
+  gem 'minitest-vcr'
+  gem 'webmock'
 end
 ###
 
