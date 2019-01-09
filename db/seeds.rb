@@ -11,3 +11,18 @@ Repo.create(repo_url: "https://github.com/ada-c10/inspiration-board", individual
 
 Repo.create(repo_url: "https://github.com/Ada-C10/video-store-consumer", individual: false)
 
+Repo.create(repo_url: "https://github.com/Ada-C9/video-store-consumer", individual: false)
+
+Classroom.create(cohort_number: 10, name: 'Nodes')
+Classroom.create(cohort_number: 10, name: 'Edges')
+Classroom.create(cohort_number: 9, name: 'Ampers')
+
+ClassroomRepo.create(classroom: Classroom.find_by(name: 'Nodes'),
+  repo_id: Repo.find_by(repo_url: 'https://github.com/ada-c10/inspiration-board').id)
+
+ClassroomRepo.create(classroom: Classroom.find_by(name: 'Edges'),
+  repo_id: Repo.find_by(repo_url: 'https://github.com/ada-c10/inspiration-board').id)
+
+ClassroomRepo.create(classroom: Classroom.find_by(name: 'Ampers'),
+  repo_id: Repo.find_by(repo_url: 'https://github.com/Ada-C9/video-store-consumer').id)
+
