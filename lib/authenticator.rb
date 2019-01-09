@@ -18,7 +18,7 @@ class Authenticator
       name: user_info_resp['name'],
       avatar_url: user_info_resp['avatar_url'],
       email: user_info_resp['email'],
-
+      id: user_info_resp['id']
     }
   end
 
