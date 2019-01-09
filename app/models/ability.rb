@@ -2,28 +2,41 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    return guest_rules unless user
-    unauthorized_rules unless user.authorized?
+    if user.nil?
+      can :manage, :none
+    elsif user.admin?
+      can :manage, :all
+    # elseif conditions for additional models
 
-    instructor_rules if user.instructor?
-    student_rules(user) if user.student?
-  end
-
-  def guest_rules
-  end
-
-  def unauthorized_rules
-  end
-
-  def instructor_rules
-    alias_action :new_instructor, :new_student, to: :create
-    [Cohort, Repo, Student, Submission, User, UserInvite].each do |model|
-      can :manage, model
+    else
+      can :read, :all
     end
-  end
 
-  def student_rules(user)
-    can :read, Submission, student: { github_name: user.github_name }
-    can :read, Student, github_name: user.github_name
+    # Define abilities for the passed in user here. For example:
+    #
+    #   user ||= User.new # guest user (not logged in)
+    #   if user.admin?
+    #     can :manage, :all
+    #   else
+    #     can :read, :all
+    #   end
+    #
+    # The first argument to `can` is the action you are giving the user
+    # permission to do.
+    # If you pass :manage it will apply to every action. Other common actions
+    # here are :read, :create, :update and :destroy.
+    #
+    # The second argument is the resource the user can perform the action on.
+    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
+    # class of the resource.
+    #
+    # The third argument is an optional hash of conditions to further filter the
+    # objects.
+    # For example, here the user can only update published articles.
+    #
+    #   can :update, Article, :published => true
+    #
+    # See the wiki for details:
+    # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
   end
 end
