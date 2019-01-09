@@ -4,10 +4,14 @@ one:
   login: bob
   name: Bob Hope
   email: bob@bob.com
+  uid: 1177416
   avatar_url: 'http://www.www.www.com/'
+  admin: true
 
 two:
   login: Kari
   name: Kari B
   email: Kari@ada.org
+  uid: 1177418
   avatar_url: http://www.kariavatar.com
+  admin: false
