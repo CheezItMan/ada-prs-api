@@ -17,4 +17,12 @@ class ApplicationController < ActionController::API
   def authenticate_user!
     head :unauthorized unless logged_in?
   end
+
+
+  rescue_from CanCan::AccessDenied do |exception|
+    render json: {
+      ok: false,
+      message: exception.message
+    }, status: :unauthorized
+  end
 end
