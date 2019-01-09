@@ -12,7 +12,7 @@ class AuthenticationController < ApplicationController
     # Generate token
     token = JsonWebToken.encode(login)
     # create a user if it doesn't exist
-    User.where(email: email).first_or_create!(
+    User.where(uid: uid).first_or_create!(
       name: name,
       login: login,
       avatar_url: avatar_url,
