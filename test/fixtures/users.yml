@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  login: MyString
-  name: MyString
-  email: MyString
-  avatar_url: MyString
+  login: bob
+  name: Bob Hope
+  email: bob@bob.com
+  avatar_url: 'http://www.www.www.com/'
 
 two:
-  login: MyString
-  name: MyString
-  email: MyString
-  avatar_url: MyString
+  login: Kari
+  name: Kari B
+  email: Kari@ada.org
+  avatar_url: http://www.kariavatar.com
