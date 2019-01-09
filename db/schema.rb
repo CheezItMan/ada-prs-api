@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_09_014453) do
+ActiveRecord::Schema.define(version: 2019_01_09_211720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "classroom_repos", force: :cascade do |t|
+    t.bigint "classroom_id"
+    t.bigint "repo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["classroom_id"], name: "index_classroom_repos_on_classroom_id"
+    t.index ["repo_id"], name: "index_classroom_repos_on_repo_id"
+  end
 
   create_table "classrooms", force: :cascade do |t|
     t.integer "cohort_number"
@@ -29,6 +38,18 @@ ActiveRecord::Schema.define(version: 2019_01_09_014453) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "student_submissions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "submission_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["submission_id"], name: "index_student_submissions_on_submission_id"
+    t.index ["user_id"], name: "index_student_submissions_on_user_id"
+  end
+
+# Could not dump table "submissions" because of following StandardError
+#   Unknown type 'submission_grade' for column 'grade'
+
   create_table "users", force: :cascade do |t|
     t.string "login"
     t.string "name"
@@ -40,4 +61,9 @@ ActiveRecord::Schema.define(version: 2019_01_09_014453) do
     t.string "uid"
   end
 
+  add_foreign_key "classroom_repos", "classrooms"
+  add_foreign_key "classroom_repos", "repos"
+  add_foreign_key "student_submissions", "submissions"
+  add_foreign_key "student_submissions", "users"
+  add_foreign_key "submissions", "repos"
 end

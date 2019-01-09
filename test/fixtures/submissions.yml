@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  repo: one
+  pr_url: MyString
+  feedback_url: MyString
+  grade: MyString
+
+two:
+  repo: two
+  pr_url: MyString
+  feedback_url: MyString
+  grade: MyString
