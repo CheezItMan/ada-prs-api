@@ -13,6 +13,16 @@ Minitest::Reporters.use!(
   Minitest.backtrace_filter
 )
 
+# Monkey patch VCR to allow regex replacements (hiding my tokens from github)
+class VCR::HTTPInteraction::HookAware
+  def filter!(text, replacement_text)
+    replacement_text = replacement_text.to_s unless replacement_text.is_a?(Regexp)
+    text = text.to_s
+    return self if [text, replacement_text].any? { |t| t.empty? }
+    filter_object!(self, text, replacement_text)
+  end
+end
+
 VCR.configure do |config|
   config.cassette_library_dir = 'test/cassettes' # folder where casettes will be located
   config.hook_into :webmock # tie into this other tool called webmock
@@ -29,6 +39,12 @@ VCR.configure do |config|
   end
   config.filter_sensitive_data("<JWT_SECRET>") do
     ENV['JWT_SECRET']
+  end
+  config.filter_sensitive_data("<ACCESS_TOKEN>") do
+    ENV['GITHUB_TOKEN']
+  end
+  config.filter_sensitive_data("<GITHUB_ACCESS_TOKEN>") do
+    ENV['GITHUB_ACCESS_TOKEN']
   end
 end
 

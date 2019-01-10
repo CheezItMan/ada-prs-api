@@ -3,10 +3,13 @@ require "test_helper"
 describe AuthenticationController do
   it "should get github login link" do
     VCR.use_cassette("login") do
-      token = "12f434baedacdb08f217"
+
+      token = ENV["GITHUB_TOKEN"]
       get auth_github_path, params: { code: token }
       response_location = response.location
 
+      ap response_location
+      
       expect(response_location.include? "token=").must_equal true
       must_respond_with :redirect
     end    
