@@ -8,7 +8,6 @@ class Authenticator
   def github(code)
     access_token_resp = fetch_github_access_token(code)
 
-
     access_token = access_token_resp['access_token']
     user_info_resp = fetch_github_user_info(access_token)
 
@@ -18,7 +17,8 @@ class Authenticator
       name: user_info_resp['name'],
       avatar_url: user_info_resp['avatar_url'],
       email: user_info_resp['email'],
-      id: user_info_resp['id']
+      id: user_info_resp['id'],
+      access_token: access_token
     }
   end
 
