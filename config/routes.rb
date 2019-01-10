@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:index]
-  resources :repos, only: [:index]
+  # resources :repos, only: [:index]
   resources :classes, only: [:index, :create, :update, :destroy] do
     resources :repos, only: [:index]
   end
