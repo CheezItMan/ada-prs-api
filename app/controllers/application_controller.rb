@@ -18,6 +18,27 @@ class ApplicationController < ActionController::API
     head :unauthorized unless logged_in?
   end
 
+  def not_found
+    render json: {
+      ok: false,
+      message: 'That resource cannot be found'
+    }, status: :not_found
+  end
+
+  rescue_from JWT::ExpiredSignature do |exception|
+    render json: {
+      ok: false,
+      message: exception.message
+    }, status: :unauthorized
+  end
+
+  rescue_from JWT::DecodeError do |exception|
+    render json: {
+      ok: false,
+      message: exception.message
+    }, status: :unauthorized
+  end
+ 
 
   rescue_from CanCan::AccessDenied do |exception|
     render json: {
