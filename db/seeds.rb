@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Repo.destroy_all
+Classroom.destroy_all
+
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
 
 Repo.create(repo_url: "https://github.com/ada-c10/inspiration-board", individual: true)
 
@@ -17,12 +23,11 @@ Classroom.create(cohort_number: 10, name: 'Nodes')
 Classroom.create(cohort_number: 10, name: 'Edges')
 Classroom.create(cohort_number: 9, name: 'Ampers')
 
-ClassroomRepo.create(classroom: Classroom.find_by(name: 'Nodes'),
-  repo_id: Repo.find_by(repo_url: 'https://github.com/ada-c10/inspiration-board').id)
 
-ClassroomRepo.create(classroom: Classroom.find_by(name: 'Edges'),
-  repo_id: Repo.find_by(repo_url: 'https://github.com/ada-c10/inspiration-board').id)
+Classroom.first.repos << Repo.first
+Classroom.find_by(name: 'Edges').repos << Repo.find_by(repo_url:  "https://github.com/Ada-C10/video-store-consumer")
+Classroom.find_by(name: 'Edges').repos << Repo.find_by(repo_url: "https://github.com/ada-c10/inspiration-board")
 
-ClassroomRepo.create(classroom: Classroom.find_by(name: 'Ampers'),
-  repo_id: Repo.find_by(repo_url: 'https://github.com/Ada-C9/video-store-consumer').id)
+
+Classroom.find_by(name: 'Ampers').repos << Repo.find_by(repo_url: 'https://github.com/Ada-C9/video-store-consumer')
 

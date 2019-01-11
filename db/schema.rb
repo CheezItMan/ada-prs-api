@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_09_224645) do
+ActiveRecord::Schema.define(version: 2019_01_11_212510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "classroom_repos", force: :cascade do |t|
-    t.bigint "classroom_id"
-    t.bigint "repo_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["classroom_id"], name: "index_classroom_repos_on_classroom_id"
-    t.index ["repo_id"], name: "index_classroom_repos_on_repo_id"
-  end
 
   create_table "classrooms", force: :cascade do |t|
     t.integer "cohort_number"
@@ -31,11 +22,17 @@ ActiveRecord::Schema.define(version: 2019_01_09_224645) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "classrooms_repos", id: false, force: :cascade do |t|
+    t.bigint "classroom_id", null: false
+    t.bigint "repo_id", null: false
+  end
+
   create_table "repos", force: :cascade do |t|
     t.string "repo_url"
     t.boolean "individual"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "student_submissions", force: :cascade do |t|
@@ -62,8 +59,6 @@ ActiveRecord::Schema.define(version: 2019_01_09_224645) do
     t.string "current_access_token"
   end
 
-  add_foreign_key "classroom_repos", "classrooms"
-  add_foreign_key "classroom_repos", "repos"
   add_foreign_key "student_submissions", "submissions"
   add_foreign_key "student_submissions", "users"
   add_foreign_key "submissions", "repos"
