@@ -26,7 +26,7 @@ class AuthenticationController < ApplicationController
     user.save
 
     # and redirect to the client app
-    redirect_to "#{issuer}/auth?token=#{token}"
+    redirect_to "#{issuer}/auth?token=#{token}&uid=#{user.id}"
   rescue StandardError => error
     redirect_to "#{issuer}?error=#{error.message}"
   end
