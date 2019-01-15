@@ -5,6 +5,7 @@ ruby '2.5.3'
 
 ###
 # Added Gems
+gem 'httparty' # TODO swap Faraday with httparty in authorization code
 gem 'faraday'
 gem 'rack-cors', :require => 'rack/cors'
 
