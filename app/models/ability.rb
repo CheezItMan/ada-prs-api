@@ -3,10 +3,11 @@ class Ability
 
   def initialize(user)
     if user.nil?
+      ap "user is nil"
       can :manage, :none
     elsif user.admin?
       can :manage, :all
-    # elseif conditions for additional models
+      # elseif conditions for additional models
 
     else
       can :read, :all
