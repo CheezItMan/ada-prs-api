@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_11_212510) do
+ActiveRecord::Schema.define(version: 2019_01_15_002407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,18 @@ ActiveRecord::Schema.define(version: 2019_01_11_212510) do
     t.bigint "repo_id", null: false
   end
 
+  create_table "classrooms_users", id: false, force: :cascade do |t|
+    t.bigint "classroom_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["classroom_id", "user_id"], name: "index_classrooms_users_on_classroom_id_and_user_id"
+    t.index ["user_id", "classroom_id"], name: "index_classrooms_users_on_user_id_and_classroom_id"
+  end
+
   create_table "repos", force: :cascade do |t|
     t.string "repo_url"
     t.boolean "individual"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
   end
 
   create_table "student_submissions", force: :cascade do |t|
